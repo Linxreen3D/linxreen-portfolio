@@ -155,6 +155,32 @@
   }
   .lightbox-close:hover{ color:var(--cyan); border-color:var(--cyan); }
   .vp-frame{ cursor: zoom-in; }
+
+  .burger{
+    display:none; background:none; border:1px solid var(--line-strong); border-radius:3px;
+    width:38px; height:34px; cursor:pointer; position:relative; z-index:60;
+  }
+  .burger span{
+    display:block; width:18px; height:1.5px; background:var(--text); margin:4px auto;
+    transition: transform .25s, opacity .25s;
+  }
+  .burger.open span:nth-child(1){ transform: translateY(5.5px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform: translateY(-5.5px) rotate(-45deg); }
+  @media(max-width:700px){
+    .navlinks{
+      display:none; position:fixed; top:0; right:0; bottom:0; width:min(78vw,300px);
+      background:var(--panel); border-left:1px solid var(--line); flex-direction:column;
+      padding:90px 28px; gap:26px; z-index:55;
+    }
+    .navlinks.open{ display:flex; }
+    .burger{ display:block; }
+    .nav-overlay{
+      display:none; position:fixed; inset:0; background:rgba(8,10,11,0.6); z-index:54;
+    }
+    .nav-overlay.open{ display:block; }
+  }
+
 </style>
 </head>
 <body>
@@ -162,15 +188,17 @@
 
 <nav>
   <div class="logo">LX<span>_</span>MODELS</div>
-  <div class="navlinks">
+  <div class="navlinks" id="navlinks">
     <a href="#work">Work</a>
-    <a href="#sabers">Lightsabers</a>
+    <a href="#sabers">Gear &amp; Hilts</a>
     <a href="#attach">Attachments</a>
     <a href="#helmets">Helmets</a>
     <a href="#props">Props</a>
     <a href="#contact">Contact</a>
   </div>
+  <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <header class="hero">
   <div>
@@ -232,7 +260,7 @@
 <section id="sabers">
   <div class="sec-head">
     <span class="sec-num">02</span>
-    <h2 class="sec-title">Lightsabers</h2>
+    <h2 class="sec-title">Gear &amp; Hilts</h2>
   </div>
   <p class="sec-text">
     Hilts and character gear from GMOD CWRP — modelling, texturing and render passes.
@@ -364,7 +392,21 @@
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  const navOverlay = document.getElementById('navOverlay');
+  function toggleNav(){
+    burger.classList.toggle('open');
+    navlinks.classList.toggle('open');
+    navOverlay.classList.toggle('open');
+  }
+  burger.addEventListener('click', toggleNav);
+  navOverlay.addEventListener('click', toggleNav);
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (navlinks.classList.contains('open')) toggleNav();
+  }));
+
 </script>
 </body>
 </html>
-<!-- redeploy trigger -->
