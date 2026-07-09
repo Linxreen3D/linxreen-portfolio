@@ -38,8 +38,6 @@
     pointer-events:none; z-index:0;
   }
   a{color:inherit; text-decoration:none;}
-
-  /* ---- nav ---- */
   nav{
     position: sticky; top:0; z-index:50;
     display:flex; align-items:center; justify-content:space-between;
@@ -58,8 +56,6 @@
   .navlinks a{color:var(--text-dim); transition:color .2s;}
   .navlinks a:hover{color:var(--cyan);}
   @media(max-width:700px){ .navlinks{display:none;} }
-
-  /* ---- hero ---- */
   .hero{
     position:relative; z-index:1;
     padding: 12vh 6vw 10vh;
@@ -90,8 +86,6 @@
   .btn-primary{ background:var(--cyan); color:#0B1213; border-color:var(--cyan); font-weight:500;}
   .btn-primary:hover{ box-shadow:0 0 22px var(--cyan-dim); transform:translateY(-1px); }
   .btn-ghost:hover{ border-color:var(--cyan); color:var(--cyan); }
-
-  /* rotating wireframe cube signature */
   .cube-stage{ display:flex; justify-content:center; align-items:center; perspective:900px; height:300px;}
   .cube{ width:150px; height:150px; position:relative; transform-style:preserve-3d; animation: spin 16s linear infinite; }
   .cube div{
@@ -106,15 +100,11 @@
   .cube .t{ transform: rotateX(90deg) translateZ(75px); }
   .cube .bo{ transform: rotateX(-90deg) translateZ(75px); }
   @keyframes spin{ from{ transform: rotateX(-18deg) rotateY(0deg);} to{ transform: rotateX(-18deg) rotateY(360deg);} }
-
-  /* ---- section frame ---- */
   section{ position:relative; z-index:1; padding: 8vh 6vw; max-width:1280px; margin:0 auto; }
   .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:36px; border-bottom:1px solid var(--line); padding-bottom:18px;}
   .sec-num{ font-family:'JetBrains Mono', monospace; color:var(--cyan); font-size:13px;}
   .sec-title{ font-family:'Space Grotesk', sans-serif; font-size:28px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;}
   .sec-text{ color:var(--text-dim); font-size:15px; line-height:1.75; max-width:680px; margin-bottom:36px;}
-
-  /* ---- viewport gallery cards ---- */
   .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:26px; }
   .vp-card{
     position:relative; background:var(--panel); border:1px solid var(--line);
@@ -137,17 +127,9 @@
   .vp-meta{ padding:16px 18px; display:flex; justify-content:space-between; align-items:center;}
   .vp-meta p{ font-size:14px; font-weight:500;}
   .vp-meta span{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--text-dim);}
-
-  .empty-note{
-    border:1px dashed var(--line-strong); border-radius:4px; padding:34px;
-    text-align:center; color:var(--text-dim); font-family:'JetBrains Mono', monospace; font-size:13px;
-  }
-
-  /* ---- contact ---- */
   .contact{ text-align:center; padding-top:6vh; padding-bottom:12vh; }
   .contact .sec-title{ font-size:34px; }
   .contact p{ color:var(--text-dim); max-width:480px; margin:14px auto 30px; line-height:1.7; }
-
   footer{
     position:relative; z-index:1; text-align:center; padding:26px; border-top:1px solid var(--line);
     color:var(--text-dim); font-family:'JetBrains Mono', monospace; font-size:11px;
@@ -276,9 +258,8 @@
     <h2 class="sec-title">Props</h2>
   </div>
   <p class="sec-text">
-    Map props with functional physics and basic animation work.
+    Map props with functional physics and basic animation work. Renders coming soon.
   </p>
-  <div class="empty-note">GALLERY EMPTY — add renders here when ready</div>
 </section>
 
 <section id="contact" class="contact">
